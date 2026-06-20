@@ -5,6 +5,14 @@ const jwt = require("jsonwebtoken");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const { body } = require("express-validator");
+const fs = require("fs");
+
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
+if (!fs.existsSync("temp")) {
+  fs.mkdirSync("temp");
+}
 
 const adminRoutes = require("./routes/adminRoutes");
 
