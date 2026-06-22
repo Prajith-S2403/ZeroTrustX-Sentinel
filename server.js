@@ -67,7 +67,9 @@ app.post(
   validate,
   async (req, res) => {
     try {
-      const { name, email, password } = req.body;
+      const name = req.body.name;
+      const email = req.body.email.toLowerCase();
+      const password = req.body.password;
 
       const existingUser = await User.findOne({ email });
 
@@ -107,7 +109,8 @@ app.post(
   validate,
   async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const email = req.body.email.toLowerCase();
+      const password = req.body.password;
 
       const user = await User.findOne({ email });
 
